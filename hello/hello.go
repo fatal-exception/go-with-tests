@@ -1,17 +1,30 @@
 package main
 
-import "fmt"
-
-const englishPrefix = "Hello, "
+import (
+	"fmt"
+	"strings"
+)
 
 // Hello is a useless function
-func Hello(name string) string {
+func Hello(name string, language string) string {
+	helloPrefixes := map[string]string{}
+	helloPrefixes["english"] = "Hello"
+	helloPrefixes["spanish"] = "Hola"
+	helloPrefixes["french"] = "Bonjour"
+
 	if name == "" {
-		return englishPrefix + "World"
+		name = "World"
 	}
-	return englishPrefix + name
+
+	language = strings.ToLower(language)
+	_, ok := helloPrefixes[language]
+
+	if !ok || language == "" {
+		language = "english"
+	}
+	return helloPrefixes[language] + ", " + name
 }
 
 func main() {
-	fmt.Println(Hello("Matt"))
+	fmt.Println(Hello("Matt", ""))
 }

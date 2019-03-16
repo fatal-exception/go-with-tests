@@ -1,6 +1,6 @@
 package iteration
 
-// Repeatrecursive takes a rune and returns a string with that rune 5 times
+// Repeatrecursive takes a rune and returns a string with that rune n times
 func RepeatRecursive(r rune, times int) (s string) {
 
 	// define the function otherwise Go can't handle the recursion
@@ -15,7 +15,7 @@ func RepeatRecursive(r rune, times int) (s string) {
 	return stringBuild(times, r, "")
 }
 
-// Give5iterative takes a rune and returns a string with that rune 5 times
+// RepeatIterative takes a rune and returns a string with that rune n times
 func RepeatIterative(r rune, times int) (s string) {
 
 	for i := 0; i < times; i++ {

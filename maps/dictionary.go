@@ -33,6 +33,26 @@ func (d Dictionary) Add(word, definition string) error {
 	return nil
 }
 
+// Update replaces the definition of a word already in dictionary
+func (d Dictionary) Update(word, newDefinition string) error {
+	_, alreadyInserted := d[word]
+	if alreadyInserted {
+		d[word] = newDefinition
+		return nil
+	}
+	return ErrWordNotFound
+}
+
+// Delete removes word from dict
+func (d Dictionary) Delete(word string) error {
+	_, alreadyInserted := d[word]
+	if alreadyInserted {
+		delete(d, word)
+		return nil
+	}
+	return ErrWordNotFound
+}
+
 func main() {
 	myDict := Dictionary(map[string]string{"a": "b"})
 	fmt.Println(myDict["a"])
